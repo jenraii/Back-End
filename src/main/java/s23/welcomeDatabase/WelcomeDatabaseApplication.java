@@ -1,0 +1,13 @@
+package s23.welcomeDatabase;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WelcomeDatabaseApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WelcomeDatabaseApplication.class, args);
+	}
+
+}
