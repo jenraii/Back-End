@@ -8,6 +8,15 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
 <h1>Books</h1>
+<div class="col-md-4">
+		<i>Welcome <b sec:authentication="name"></b>, 
+        your role is <b sec:authentication="principal.authorities"></b>
+		</i></div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
 <table class="table table-striped" >
 	<tr>
 		<th>Title</th>
@@ -22,9 +31,9 @@ xmlns:th="http://www.thymeleaf.org">
 		<td th:text="${book.author}"></td>
 		<td th:text="${book.publicationYear}"></td>
 		<td th:text="${book.price}"></td>
-		<td th:field="${book.category?.name}"></td>
+		<td th:text="${book.category?.name}"></td>
 		<td>
-			<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>		
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>		
 		</td>
 		<td>
 			<a th:href="@{/edit/{id}(id=${book.id})}">Edit</a>
