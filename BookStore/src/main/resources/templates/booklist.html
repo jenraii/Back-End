@@ -14,6 +14,7 @@ xmlns:th="http://www.thymeleaf.org">
 		<th>Author</th>
 		<th>Year</th>
 		<th>Price</th>
+		<th>Category</th>
 	</tr>
 
 	<tr th:each = "book : ${books}">
@@ -21,7 +22,7 @@ xmlns:th="http://www.thymeleaf.org">
 		<td th:text="${book.author}"></td>
 		<td th:text="${book.publicationYear}"></td>
 		<td th:text="${book.price}"></td>
-		<td th:text="${book?.category?.name} ?: ''"></td>
+		<td th:field="${book.category?.name}"></td>
 		<td>
 			<a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>		
 		</td>
