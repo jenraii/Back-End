@@ -2,6 +2,8 @@ package s23.BookstoreDatabase.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ public class Category {
 	private Long categoryid;
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Book> books;
 
@@ -26,13 +29,6 @@ public class Category {
 	public Category(String name) {
 		super();
 		this.name = name;
-	}
-
-	public Category(Long categoryid, String name, List<Book> books) {
-		super();
-		this.categoryid = categoryid;
-		this.name = name;
-		this.books = books;
 	}
 
 	public Long getCategoryid() {
@@ -61,7 +57,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [categoryid=" + categoryid + ", name=" + name + ", books=" + books + "]";
+		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
 	}
 
 }
