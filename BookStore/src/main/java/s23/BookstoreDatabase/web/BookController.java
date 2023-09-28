@@ -1,10 +1,12 @@
 package s23.BookstoreDatabase.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,24 +34,35 @@ public class BookController {
 
 	@GetMapping(value = "/booklist")
 	public String showBooks(Model model) {
-		System.out.println("books " + repository.findAll());
 		model.addAttribute("books", repository.findAll());
-
 		return "booklist";
+	}
+	
+	@RequestMapping(value="/books", method = RequestMethod.GET)
+	public @ResponseBody List<Book> bookListRest() {
+		return (List<Book>) repository.findAll();
+		
+	}
+	
+	@RequestMapping(value="/book/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional <Book> findBookRest(@PathVariable("id") Long id) {
+		return repository.findById(id);
 	}
 
 	@GetMapping("/add")
-	public String addBook(Model model) {
+	public String ShowAddBookForm(Model model) {
 		model.addAttribute("book", new Book());
 		model.addAttribute("categories", crepository.findAll());
 		return "addbook";
 	}
 
 	@PostMapping("/save")
-	public String save(@ModelAttribute Book book) { 
+	public String saveBook(Book book) { 
 		repository.save(book);
 		return "redirect:booklist";
 	}
+	
+
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editBook(@PathVariable("id") Long id, Model model) {
@@ -63,12 +76,11 @@ public class BookController {
 	@PostMapping(value = "/update/{id}")
 	public String updateBook(Book book) {
 		repository.save(book);
-		crepository.save(book);
 		return "redirect:/booklist";
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteBook(@PathVariable("id") Long id) {
+	public String deleteBook(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
 		return "redirect:/booklist";
 	}
