@@ -2,6 +2,7 @@ package s23.BookstoreDatabase.web;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,13 +60,14 @@ public class BookController {
 		return "editbook";
 
 	}
-
+	
 	@PostMapping(value = "/update/{id}")
 	public String updateBook(Book book) {
 		repository.save(book);
 		return "redirect:/booklist";
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long id, Model model) {
 		repository.deleteById(id);
