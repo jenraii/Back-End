@@ -1,7 +1,5 @@
 package s23.BookstoreDatabase.web;
 
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,16 +36,6 @@ public class BookController {
 		return "booklist";
 	}
 	
-	@RequestMapping(value="/books", method = RequestMethod.GET)
-	public @ResponseBody List<Book> bookListRest() {
-		return (List<Book>) repository.findAll();
-		
-	}
-	
-	@RequestMapping(value="/book/{id}", method = RequestMethod.GET)
-	public @ResponseBody Optional <Book> findBookRest(@PathVariable("id") Long id) {
-		return repository.findById(id);
-	}
 
 	@GetMapping("/add")
 	public String ShowAddBookForm(Model model) {
