@@ -24,11 +24,10 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 
-	@GetMapping("/index")
-	@ResponseBody
-	public String showMainPage() {
-		return "Tämä on pääsivu";
-	}
+	@RequestMapping(value="/login")
+	    public String login() {	
+	        return "login";
+	    }
 
 	@GetMapping(value = "/booklist")
 	public String showBooks(Model model) {
