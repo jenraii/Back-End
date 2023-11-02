@@ -42,7 +42,7 @@ INSERT INTO book (title, author, publication_year, isbn, price, categoryid)
 VALUES ('Vitsikirja', 'Ruonansuu, J.', 2000, '1111111', 15.95, 1);
 
 INSERT INTO book (title, author, publication_year, isbn, price, categoryid)
-VALUES ('The Hobbit', 'Tolkien, J.R.R.', 1990, '2222222', 40.00, 2);
+VALUES ('The Hobbit', 'Tolkien, J.R.R.', 1937, '2222222', 40.00, 2);
 
 INSERT INTO application_user (username, password, role)
 VALUES ('admin', '$2b$10$o0liCdP9lzTgCHarj9JCdeoyWICDjRpQCYS4TP97jSnRc5tlriKPS', 'ADMIN');
