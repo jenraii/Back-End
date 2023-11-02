@@ -1,4 +1,4 @@
-package s23.BookStore;
+package s23.BookstoreDatabase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

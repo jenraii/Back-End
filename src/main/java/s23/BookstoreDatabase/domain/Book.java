@@ -7,49 +7,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+
 @Entity
 public class Book {
 	@Id
 	 @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	private String title, author, isbn;
 	private int publicationYear;
 	private double price;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	private Category category;
-	
-	public Book() {
-		super();
-	}
-
-	public Book(Category category, String title, String author, String isbn, int publicationYear, double price) {
-		super();
-		this.category = category;
-		this.title = title;
-		this.author = author;
-		this.isbn = isbn;
-		this.publicationYear = publicationYear;
-		this.price = price;
-	}
-
-	public Book(String title, String author, int publicationYear, double price) {
-		super();
-		this.title = title;
-		this.author = author;
-		this.publicationYear = publicationYear;
-		this.price = price;
-	}
-
-	public Book(String title, String author, String isbn, int publicationYear, double price) {
-		super();
-		this.title = title;
-		this.author = author;
-		this.isbn = isbn;
-		this.publicationYear = publicationYear;
-		this.price = price;
-	}
 	
 	public Category getCategory() {
 		return category;
@@ -59,6 +30,26 @@ public class Book {
 		this.category = category;
 	}
 	
+	public Book() {
+		super();
+	}
+
+	public Book(String title, String author, String isbn, int publicationYear, double price, Category category) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.publicationYear = publicationYear;
+		this.price = price;
+		this.category = category;
+	}
+	
+	public Book(String title, String author) {
+		super();
+		this.title = title;
+		this.author = author;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -66,6 +57,7 @@ public class Book {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 
 	public String getTitle() {
 		return title;
@@ -95,7 +87,7 @@ public class Book {
 		return publicationYear;
 	}
 
-	public void setPublicationYear(int year) {
+	public void setPublicationYear(int publicationYear) {
 		this.publicationYear = publicationYear;
 	}
 
@@ -107,11 +99,10 @@ public class Book {
 		this.price = price;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", category=" + category + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", publicationYear=" + publicationYear
-				+ ", price=" + price + "]";
+		return "Book{" + "id=" + id + ", title='" + title + ", author='" + author + ", isbn='" + isbn + ", publicationYear=" + publicationYear + ", price=" + price +
+         ", category=" + category + '}';
 	}
-	
+
 }
