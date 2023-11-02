@@ -10,8 +10,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="category")
 public class Category {
 	
 	@Id
@@ -58,7 +60,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [name=" + name + "]";
+		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
 	}
 
 }

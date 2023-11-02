@@ -9,12 +9,11 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name="Users")
+@Table(name="application_user")
 public class AppUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "username", nullable = false, unique = true)
@@ -34,6 +33,14 @@ public class AppUser {
 		this.username = username;
 		this.passwordHash = passwordHash;
 		this.role = role;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -59,10 +66,13 @@ public class AppUser {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Username [username=" + username + "]";
+		return "AppUser [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role
+				+ "]";
 	}
+	
+	
 
 }

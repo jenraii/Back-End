@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import s23.BookstoreDatabase.web.UserDetailServiceImpl;
+import s23.BookstoreDatabase.service.UserDetailServiceImpl;
 
 @EnableMethodSecurity(securedEnabled = true)
 @Configuration
