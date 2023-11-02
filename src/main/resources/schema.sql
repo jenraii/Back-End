@@ -32,17 +32,17 @@ CREATE TABLE application_user
 );
 
 INSERT INTO category (name)
-VALUES ('Category 1');
+VALUES ('Comedy');
 INSERT INTO category (name)
-VALUES ('Category 2');
+VALUES ('Fantasy');
 INSERT INTO category (name)
-VALUES ('Category 3');
+VALUES ('Horror');
 
 INSERT INTO book (title, author, publication_year, isbn, price, categoryid)
-VALUES ('Book 1', 'Author 1', 2000, 'ISBN-1111', 10.99, 1);
+VALUES ('Vitsikirja', 'Ruonansuu, J.', 2000, '1111111', 15.95, 1);
 
 INSERT INTO book (title, author, publication_year, isbn, price, categoryid)
-VALUES ('Book 2', 'Author 2', 2010, 'ISBN-2222', 15.99, 2);
+VALUES ('The Hobbit', 'Tolkien, J.R.R.', 1990, '2222222', 40.00, 2);
 
 INSERT INTO application_user (username, password, role)
 VALUES ('admin', '$2b$10$o0liCdP9lzTgCHarj9JCdeoyWICDjRpQCYS4TP97jSnRc5tlriKPS', 'ADMIN');
